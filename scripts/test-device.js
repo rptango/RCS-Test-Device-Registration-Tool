@@ -51,10 +51,10 @@
       label: 'Vibes',
       authType: 'oauth2-cc',
       authLabel: 'Access Token',
-      authHint: 'Auto-filled after clicking "Fetch Access Token" above, or paste one in manually. Vibes has not published a dedicated test-device endpoint, so the request below mirrors the Google Business Communications Testers call as a starting point — confirm the real endpoint and payload with your Vibes account team.',
+      authHint: 'Auto-filled after clicking "Fetch Access Token" above, or paste one in manually.',
       agentLabel: 'Agent ID',
-      agentPlaceholder: 'e.g. brand_agent_id',
-      verified: false,
+      agentPlaceholder: 'e.g. rcs_test_agent_yqdm45yl_agent',
+      verified: true,
       docsUrl: 'https://developer-aggregation.vibes.com/',
       tokenUrl: 'https://auth.rcsstudio.ai/oauth2/token',
       tokenHint: 'Retrieves a Bearer token via the OAuth2 client_credentials grant against https://auth.rcsstudio.ai/oauth2/token.',
@@ -76,12 +76,12 @@
       buildRequest({ agentId, phoneNumber, token }) {
         return {
           method: 'POST',
-          url: 'https://api.vibes.com/rcs/v1/testers',
+          url: `https://api.rcsstudio.ai/agents/${encodeURIComponent(agentId)}/test-devices`,
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
-          body: { agentId, phoneNumber },
+          body: { msisdn: `+${phoneNumber.replace(/^\+/, '')}` },
         };
       },
     },
