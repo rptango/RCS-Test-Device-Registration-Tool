@@ -55,7 +55,7 @@
       agentLabel: 'Agent ID',
       agentPlaceholder: 'e.g. rcs_test_agent_yqdm45yl_agent',
       verified: true,
-      docsUrl: 'https://developer-aggregation.vibes.com/',
+      docsUrl: 'https://docs.rcsstudio.ai/docs/welcome-to-rcs-studio',
       tokenUrl: 'https://auth.rcsstudio.ai/oauth2/token',
       tokenHint: 'Retrieves a Bearer token via the OAuth2 client_credentials grant against https://auth.rcsstudio.ai/oauth2/token.',
       buildTokenRequest({ clientId, clientSecret }) {
@@ -76,7 +76,7 @@
       buildRequest({ agentId, phoneNumber, token }) {
         return {
           method: 'POST',
-          url: `https://api.rcsstudio.ai/agents/${encodeURIComponent(agentId)}/test-devices`,
+          url: `https://try.readme.io/https://api.rcsstudio.ai/agents/${encodeURIComponent(agentId)}/test-devices`,
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
